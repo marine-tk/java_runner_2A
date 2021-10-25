@@ -7,7 +7,7 @@ import javafx.stage.Stage;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-public class AnimatedThing {
+public abstract class AnimatedThing {
     private double x;
     private double y;
 
@@ -44,7 +44,7 @@ public class AnimatedThing {
         this.lfen = lfen;
         this.hfen = hfen;
 
-        spriteSheet.setViewport(new Rectangle2D(10,1,73,97));)
+        spriteSheet.setViewport(new Rectangle2D(10,1,73,97));
     }
 
     // Getter

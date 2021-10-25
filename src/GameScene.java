@@ -15,7 +15,9 @@ public class GameScene extends Scene {
 
     public static staticThing lifebar = new staticThing(12,12,"C:\\Users\\Marin\\OneDrive - ensea.fr\\Documents\\Marine\\ENSEA\\2A\\2A - S7\\Informatique - Java\\runner\\lifebar.png");
 
-    public static staticThing hero = new staticThing(200,255,"C:\\Users\\Marin\\OneDrive - ensea.fr\\Documents\\Marine\\ENSEA\\2A\\2A - S7\\Informatique - Java\\runner\\heros.png");
+    //public static staticThing hero = new staticThing(200,255,"C:\\Users\\Marin\\OneDrive - ensea.fr\\Documents\\Marine\\ENSEA\\2A\\2A - S7\\Informatique - Java\\runner\\heros.png");
+
+    public Hero hero = new Hero(200,255,1)
 
     //AnimationTimer timer = new AnimationTimer()
     //public void handle(long time){

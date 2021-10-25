@@ -26,7 +26,7 @@ import javafx.scene.image.ImageView;
             root.getChildren().add(GameScene.left.imageview);
             root.getChildren().add(GameScene.right.imageview);
             root.getChildren().add(GameScene.lifebar.imageview);
-            root.getChildren().add(GameScene.hero.imageview);
+            //root.getChildren().add(GameScene.hero.imageview);
         }
 
         public static void main(String[] args) {
