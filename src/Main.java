@@ -1,3 +1,4 @@
+import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -5,28 +6,35 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.animation.Animation;
 
     public class Main extends Application {
-
         public void start(Stage primaryStage) {
-            primaryStage.setTitle("Background");
+
+            GameScene.timer.start();
+
+            primaryStage.setTitle("Runner - Marine Tsen-Kung");
             Group root = new Group();
             Pane pane = new Pane(root);
-            Scene scene = new Scene(pane, 1000, 400);
-
-            GameScene.background();
+            Scene scene = new Scene(pane, 700, 400);
             GameScene.lifebar();
-            GameScene.hero();
 
             primaryStage.setScene(scene);
             primaryStage.show();
 
+            // Saut quand un clic est fait
+            pane.setOnMouseClicked( (event)->{
+                System.out.println("Jump");
+                if (GameScene.heroRun.getAttitude() == 1){
+                    GameScene.heroRun.setAttitude(2);}
+            });
 
-            // Pour faire afficher nos StaticThing dans notre fenêtre
+
+            // Pour que nos éléments s'affichent
             root.getChildren().add(GameScene.left.imageview);
             root.getChildren().add(GameScene.right.imageview);
             root.getChildren().add(GameScene.lifebar.imageview);
-            //root.getChildren().add(GameScene.hero.imageview);
+            root.getChildren().add(GameScene.heroRun.spriteSheet);
         }
 
         public static void main(String[] args) {
