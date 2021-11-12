@@ -3,6 +3,7 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class GameScene extends Scene {
     private double x;
@@ -11,20 +12,20 @@ public class GameScene extends Scene {
     private double h;
     //Camera cam = new Camera(x,y);
 
-    private ArrayList<Foe> foe;
+    static Random rand = new Random();
 
-    public static staticThing left = new staticThing(0,0,"C:\\Users\\Marin\\IdeaProjects\\Runner\\img\\desert.png");   // instanciation de 2 staticThing pour afficher le background
-    public static staticThing right = new staticThing(800,0,"C:\\Users\\Marin\\IdeaProjects\\Runner\\img\\desert.png");   // instanciation de 2 staticThing pour afficher le background);
-    public static staticThing lifebar = new staticThing(20,12,"C:\\Users\\Marin\\IdeaProjects\\Runner\\img\\lifebar.png");
-    public static Hero heroRun = new Hero(200,255,1,0,420,10,103,"C:\\Users\\Marin\\IdeaProjects\\Runner\\img\\heros.png");
-    public static Hero heroJump = new Hero(200,255,2,0,85,10,103,"C:\\Users\\Marin\\IdeaProjects\\Runner\\img\\heros.png");
+    public static staticThing left = new staticThing(0,0,"desert.png");   // instanciation de 2 staticThing pour afficher le background
+    public static staticThing right = new staticThing(800,0,"desert.png");   // instanciation de 2 staticThing pour afficher le background);
+    public static staticThing fullLife = new staticThing(20,12,"lifebar.png");
+    public static Hero heroRun = new Hero(200,255,1,0,420,10,103,"heros.png");
+    public static Foe fantome = new Foe(801,280,1,0,0,74,57,"foe.png");
 
     // Animation du héro, timer
     static AnimationTimer timer = new AnimationTimer() {
         @Override
         public void handle(long time) {
             try {
-                Thread.sleep(40);             // Permet de contrôler la vitesse du héro
+                Thread.sleep(60);             // Permet de contrôler la vitesse du héro
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -33,6 +34,7 @@ public class GameScene extends Scene {
             //camera.update(time);
             left.update(time);
             right.update(time);
+            fantome.animationFoe(time);
         }
     };
 
@@ -54,8 +56,8 @@ public class GameScene extends Scene {
     }
 
     public static void lifebar(){
-        lifebar.imageview.setX(lifebar.getSTx());
-        lifebar.imageview.setY(lifebar.getSTy());
+        fullLife.imageview.setX(fullLife.getSTx());
+        fullLife.imageview.setY(fullLife.getSTy());
     }
 
     public static void heroRun(){
@@ -63,6 +65,13 @@ public class GameScene extends Scene {
         heroRun.spriteSheet.setViewport(new Rectangle2D(heroRun.getIndex(),0,80,100));
         heroRun.spriteSheet.setX(heroRun.getX());
         heroRun.spriteSheet.setY(heroRun.getY());
+    }
+
+    public static void insertFantome(){
+        int n = rand.nextInt(300);
+        fantome.spriteSheet.setViewport(new Rectangle2D(fantome.getIndex(),0,74,57));
+        fantome.spriteSheet.setX(fantome.getX());
+        fantome.spriteSheet.setY(fantome.getY());
     }
 
     // L'update pour faire l'animation du background se situe dans staticThing

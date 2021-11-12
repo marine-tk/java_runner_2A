@@ -63,15 +63,22 @@ public abstract class AnimatedThing {
     }
     public int getAttitude() { return attitude;}
 
-    // Update - Pour l'animation du hero
+    // Animation du fantôme
+    public void animationFoe(long time) {
+        GameScene.insertFantome();
+        if (this.x < -801) {
+            this.x = 700;
+        } else {
+            this.x = this.x - 40;
+        }
+    }
+
+    // Update - Pour les animations du héros
     public void update(long time) {
 
-        int gravity;
         // Attitude 1 => le héros court
         if (this.attitude == 1) {
-
             GameScene.heroRun();
-
             if (this.index < this.maxIndex) {
                 this.index = this.index + 85;
             } else {
@@ -82,8 +89,8 @@ public abstract class AnimatedThing {
         // Attitude 2 => jump up
         if (this.attitude == 2) {
             GameScene.heroRun.jumpUp();
-            this.y = this.y-20;
-            if (this.y <= 180){ this.setAttitude(3);}
+            this.y = this.y-25;
+            if (this.y <=110){ this.setAttitude(3);}
         }
 
         // Attitude 3 => jump down
@@ -91,14 +98,14 @@ public abstract class AnimatedThing {
             GameScene.heroRun.jumpDown();
 
             if (this.y <= 255) {
-                this.y = this.y + 20;
+                this.y = this.y + 25;
             }
             if (this.y >= 255) {
                 this.setAttitude(1);
             }
-
-
         }
+
+
 
 
     }

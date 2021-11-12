@@ -2,6 +2,7 @@ import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.scene.image.Image;
@@ -30,11 +31,15 @@ import javafx.animation.Animation;
             });
 
 
+
             // Pour que nos éléments s'affichent
             root.getChildren().add(GameScene.left.imageview);
             root.getChildren().add(GameScene.right.imageview);
-            root.getChildren().add(GameScene.lifebar.imageview);
+            root.getChildren().add(GameScene.fullLife.imageview);
             root.getChildren().add(GameScene.heroRun.spriteSheet);
+            root.getChildren().add(GameScene.fantome.spriteSheet);
+
+
         }
 
         public static void main(String[] args) {
