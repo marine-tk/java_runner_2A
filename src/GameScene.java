@@ -2,6 +2,7 @@ import javafx.animation.AnimationTimer;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import java.util.ArrayList;
 
 public class GameScene extends Scene {
     private double x;
@@ -9,6 +10,8 @@ public class GameScene extends Scene {
     private double l;
     private double h;
     //Camera cam = new Camera(x,y);
+
+    private ArrayList<Foe> foe;
 
     public static staticThing left = new staticThing(0,0,"C:\\Users\\Marin\\IdeaProjects\\Runner\\img\\desert.png");   // instanciation de 2 staticThing pour afficher le background
     public static staticThing right = new staticThing(800,0,"C:\\Users\\Marin\\IdeaProjects\\Runner\\img\\desert.png");   // instanciation de 2 staticThing pour afficher le background);

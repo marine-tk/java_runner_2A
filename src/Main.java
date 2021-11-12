@@ -13,7 +13,7 @@ import javafx.animation.Animation;
 
             GameScene.timer.start();
 
-            primaryStage.setTitle("Runner - Marine Tsen-Kung");
+            primaryStage.setTitle("Runner");
             Group root = new Group();
             Pane pane = new Pane(root);
             Scene scene = new Scene(pane, 700, 400);
