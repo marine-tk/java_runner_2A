@@ -69,9 +69,18 @@ public abstract class AnimatedThing {
         if (this.x < -801) {
             this.x = 700;
         } else {
-            this.x = this.x - 40;
+            this.x = this.x - 25;
         }
     }
+
+    // Collision du héros et de l'ennemi
+    public void collision(long time) {
+        if (this.x == GameScene.heroRun.getX()+75 & GameScene.heroRun.getY() + 99 >= 280) {
+                System.out.println("Collision");
+                GameScene.lifebar2.setAttitude(2);
+            }
+        }
+
 
     // Update - Pour les animations du héros
     public void update(long time) {

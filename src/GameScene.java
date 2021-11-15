@@ -16,9 +16,11 @@ public class GameScene extends Scene {
 
     public static staticThing left = new staticThing(0,0,"desert.png");   // instanciation de 2 staticThing pour afficher le background
     public static staticThing right = new staticThing(800,0,"desert.png");   // instanciation de 2 staticThing pour afficher le background);
-    public static staticThing fullLife = new staticThing(20,12,"lifebar.png");
-    public static Hero heroRun = new Hero(200,255,1,0,420,10,103,"heros.png");
+    public static staticThing lifebar = new staticThing(15,25,"lifebar.png");
+    public static staticThing life = new staticThing(15,11,"life.png");
+    public static Hero heroRun = new Hero(200,255,1,0,425,10,103,"heros.png");
     public static Foe fantome = new Foe(801,280,1,0,0,74,57,"foe.png");
+    public static Lifebar lifebar2 = new Lifebar(15,25,1,0,84,81,27,"lifebar.png");
 
     // Animation du héro, timer
     static AnimationTimer timer = new AnimationTimer() {
@@ -30,11 +32,13 @@ public class GameScene extends Scene {
                 e.printStackTrace();
             }
 
+            fantome.collision(time);
             heroRun.update(time);
             //camera.update(time);
             left.update(time);
             right.update(time);
             fantome.animationFoe(time);
+
         }
     };
 
@@ -55,9 +59,14 @@ public class GameScene extends Scene {
         right.imageview.setY(right.getSTy());
     }
 
+    public static void life(){
+        life.imageview.setX(life.getSTx());
+        life.imageview.setY(life.getSTy());
+    }
+
     public static void lifebar(){
-        fullLife.imageview.setX(fullLife.getSTx());
-        fullLife.imageview.setY(fullLife.getSTy());
+        lifebar.imageview.setX(lifebar.getSTx());
+        lifebar.imageview.setY(lifebar.getSTy());
     }
 
     public static void heroRun(){

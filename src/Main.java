@@ -18,6 +18,8 @@ import javafx.animation.Animation;
             Group root = new Group();
             Pane pane = new Pane(root);
             Scene scene = new Scene(pane, 700, 400);
+
+            GameScene.life();
             GameScene.lifebar();
 
             primaryStage.setScene(scene);
@@ -35,7 +37,8 @@ import javafx.animation.Animation;
             // Pour que nos éléments s'affichent
             root.getChildren().add(GameScene.left.imageview);
             root.getChildren().add(GameScene.right.imageview);
-            root.getChildren().add(GameScene.fullLife.imageview);
+            root.getChildren().add(GameScene.life.imageview);
+            root.getChildren().add(GameScene.lifebar.imageview);
             root.getChildren().add(GameScene.heroRun.spriteSheet);
             root.getChildren().add(GameScene.fantome.spriteSheet);
 
