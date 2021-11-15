@@ -16,11 +16,14 @@ public class GameScene extends Scene {
 
     public static staticThing left = new staticThing(0,0,"desert.png");   // instanciation de 2 staticThing pour afficher le background
     public static staticThing right = new staticThing(800,0,"desert.png");   // instanciation de 2 staticThing pour afficher le background);
-    public static staticThing lifebar = new staticThing(15,25,"lifebar.png");
+
+    public static Lifebar lifebar = new Lifebar(15,25,3,0,84,81,27,"lifebar.png");
     public static staticThing life = new staticThing(15,11,"life.png");
+    public static staticThing gameover = new staticThing(150,174,"gameover.png");
+
     public static Hero heroRun = new Hero(200,255,1,0,425,10,103,"heros.png");
     public static Foe fantome = new Foe(801,280,1,0,0,74,57,"foe.png");
-    public static Lifebar lifebar2 = new Lifebar(15,25,1,0,84,81,27,"lifebar.png");
+
 
     // Animation du héro, timer
     static AnimationTimer timer = new AnimationTimer() {
@@ -32,6 +35,11 @@ public class GameScene extends Scene {
                 e.printStackTrace();
             }
 
+            if (GameScene.lifebar.getAttitude()==0){
+                GameScene.timer.stop();
+                GameScene.gameOver();}
+
+            lifebar();
             fantome.collision(time);
             heroRun.update(time);
             //camera.update(time);
@@ -65,8 +73,35 @@ public class GameScene extends Scene {
     }
 
     public static void lifebar(){
-        lifebar.imageview.setX(lifebar.getSTx());
-        lifebar.imageview.setY(lifebar.getSTy());
+        if (lifebar.getAttitude() == 3){
+        lifebar.spriteSheet.setViewport(new Rectangle2D(lifebar.getIndex(),0,82,27));
+        lifebar.spriteSheet.setX(lifebar.getX());
+        lifebar.spriteSheet.setY(lifebar.getY());}
+
+        if (lifebar.getAttitude() == 2){
+            lifebar.spriteSheet.setViewport(new Rectangle2D(lifebar.getIndex()+28,0,82,27));
+            lifebar.spriteSheet.setX(lifebar.getX());
+            lifebar.spriteSheet.setY(lifebar.getY());}
+
+        if (lifebar.getAttitude() == 1){
+            lifebar.spriteSheet.setViewport(new Rectangle2D(lifebar.getIndex()+56,0,82,27));
+            lifebar.spriteSheet.setX(lifebar.getX());
+            lifebar.spriteSheet.setY(lifebar.getY());}
+
+        if (lifebar.getAttitude() == 0){
+            lifebar.spriteSheet.setViewport(new Rectangle2D(lifebar.getIndex()+84,0,82,27));
+            lifebar.spriteSheet.setX(lifebar.getX());
+            lifebar.spriteSheet.setY(lifebar.getY());}
+    }
+
+    public static void gameOver(){
+        gameover.imageview.setX(gameover.getSTx());
+        gameover.imageview.setY(gameover.getSTy());
+    }
+
+    public static void hidegameOver(){
+        gameover.imageview.setX(-1000);
+        gameover.imageview.setY(-1000);
     }
 
     public static void heroRun(){

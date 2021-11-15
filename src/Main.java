@@ -13,6 +13,7 @@ import javafx.animation.Animation;
         public void start(Stage primaryStage) {
 
             GameScene.timer.start();
+            GameScene.lifebar.setAttitude(3);
 
             primaryStage.setTitle("Runner");
             Group root = new Group();
@@ -20,7 +21,8 @@ import javafx.animation.Animation;
             Scene scene = new Scene(pane, 700, 400);
 
             GameScene.life();
-            GameScene.lifebar();
+
+            GameScene.hidegameOver();
 
             primaryStage.setScene(scene);
             primaryStage.show();
@@ -38,7 +40,8 @@ import javafx.animation.Animation;
             root.getChildren().add(GameScene.left.imageview);
             root.getChildren().add(GameScene.right.imageview);
             root.getChildren().add(GameScene.life.imageview);
-            root.getChildren().add(GameScene.lifebar.imageview);
+            root.getChildren().add(GameScene.gameover.imageview);
+            root.getChildren().add(GameScene.lifebar.spriteSheet);
             root.getChildren().add(GameScene.heroRun.spriteSheet);
             root.getChildren().add(GameScene.fantome.spriteSheet);
 

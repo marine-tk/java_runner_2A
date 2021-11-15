@@ -36,11 +36,4 @@ public class staticThing {
         GameScene.background();
 
     }
-
-    public static void lifeUpdater(long time){
-        if (GameScene.heroRun.getX()+60==GameScene.fantome.getX()+74){
-
-        }
-
-    }
 }
