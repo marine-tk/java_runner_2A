@@ -22,7 +22,7 @@ public class GameScene extends Scene {
     public static staticThing gameover = new staticThing(150,174,"gameover.png");
 
     public static Hero heroRun = new Hero(200,255,1,0,425,10,103,"heros.png");
-    public static Foe fantome = new Foe(801,280,1,0,0,74,57,"foe.png");
+    public static Foe fantome = new Foe(801,280,0,0,0,74,57,"foe.png");
 
 
     // Animation du héro, timer
@@ -35,17 +35,22 @@ public class GameScene extends Scene {
                 e.printStackTrace();
             }
 
+            // Perte de toutes les vies
             if (GameScene.lifebar.getAttitude()==0){
                 GameScene.timer.stop();
                 GameScene.gameOver();}
 
+            // Invincibilité
+            heroRun.invincibilite(time);
+            if (fantome.getAttitude() == 0){ fantome.collision(time);}
+
             lifebar();
-            fantome.collision(time);
             heroRun.update(time);
             //camera.update(time);
             left.update(time);
             right.update(time);
             fantome.animationFoe(time);
+
 
         }
     };
@@ -100,8 +105,8 @@ public class GameScene extends Scene {
     }
 
     public static void hidegameOver(){
-        gameover.imageview.setX(-1000);
-        gameover.imageview.setY(-1000);
+        gameover.imageview.setX(-99999);
+        gameover.imageview.setY(-99999);
     }
 
     public static void heroRun(){

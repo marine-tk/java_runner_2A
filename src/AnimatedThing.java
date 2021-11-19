@@ -69,14 +69,20 @@ public abstract class AnimatedThing {
         if (this.x < -801) {
             this.x = 700;
         } else {
-            this.x = this.x - 25;
+            this.x = this.x - 30;
         }
+    }
+
+    // Enlève l'invincibilité quand un ennemi réapparaît
+    public void invincibilite(long time) {
+        if (GameScene.fantome.getX() >= 695){ GameScene.fantome.setAttitude(0);}
     }
 
     // Collision du héros et de l'ennemi
     public void collision(long time) {
-        if (this.x == GameScene.heroRun.getX() + 75 & GameScene.heroRun.getY() + 99 >= 280) {
+        if ((this.x <= 240  & this.x>200)& GameScene.heroRun.getY() >= 180) {
             System.out.println("Collision");
+            this.setAttitude(1); // active l'invincibilité après collision
             GameScene.lifebar.setAttitude(GameScene.lifebar.getAttitude() - 1);
 
         }
