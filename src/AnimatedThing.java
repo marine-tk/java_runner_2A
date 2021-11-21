@@ -8,6 +8,8 @@ import javafx.stage.Stage;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
+import java.util.Random;
+
 public abstract class AnimatedThing {
     private double x;
     private double y;

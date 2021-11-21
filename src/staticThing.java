@@ -28,7 +28,7 @@ public class staticThing {
 
     // Update pour faire l'animation du background initialement statique
     public void update(long time) {
-        if (this.x <= -801) {
+        if (this.x <= -875) {
             this.x = 700;
         } else {
             this.x = this.x - 25;
