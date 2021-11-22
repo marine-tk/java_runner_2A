@@ -16,6 +16,11 @@ import javafx.stage.Stage;
             Pane pane = new Pane(root);
             Scene scene = new Scene(pane, 700, 400);
 
+            // Paramétrage du flou (quand le joueur perd, on augmentera le paramètre du flou avec setRadius)
+            GameScene.gaussianblur.setRadius(0);
+            root.setEffect(GameScene.gaussianblur);
+            root.setEffect(GameScene.gaussianblur);
+
             GameScene.life();
             GameScene.hidegameOver();
             GameScene.hideclickRestart();
@@ -32,6 +37,7 @@ import javafx.stage.Stage;
 
                 // Recommencer le jeu
                 if (GameScene.lifebar.getAttitude()==0){
+                    GameScene.gaussianblur.setRadius(0);
                     GameScene.timer.start();
                     GameScene.fantome.restartGame();
                     GameScene.hidegameOver();
@@ -44,11 +50,12 @@ import javafx.stage.Stage;
             root.getChildren().add(GameScene.left.imageview);
             root.getChildren().add(GameScene.right.imageview);
             root.getChildren().add(GameScene.life.imageview);
-            root.getChildren().add(GameScene.gameover.imageview);
-            root.getChildren().add(GameScene.restartGame.imageview);
             root.getChildren().add(GameScene.lifebar.spriteSheet);
             root.getChildren().add(GameScene.heroRun.spriteSheet);
             root.getChildren().add(GameScene.fantome.spriteSheet);
+
+            pane.getChildren().add(GameScene.gameover.imageview);
+            pane.getChildren().add(GameScene.restartGame.imageview);
 
 
         }

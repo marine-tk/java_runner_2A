@@ -16,10 +16,6 @@ public abstract class AnimatedThing {
     public void setImageview(String fileName) {
         this.spriteSheet = new ImageView(fileName);
     }
-    public void setDuration(double Duree) {
-        this.duration = Duree;
-    }
-    public void setOffset(double offset) { this.offset = offset;}
     public void setIndex(int ind) {this.index = ind;}
     public void setMaxIndex(int maxind) {this.maxIndex = maxind;}
     public void setAttitude(int att) {
@@ -36,7 +32,6 @@ public abstract class AnimatedThing {
         this.l = l;
         this.h = h;
         setImageview(fileName);
-
     }
 
     // Getter
@@ -59,8 +54,8 @@ public abstract class AnimatedThing {
         GameScene.lifebar.setAttitude(3);
         GameScene.heroRun.setAttitude(1);
         GameScene.fantome.setAttitude(0);
+        GameScene.gaussianblur.setRadius(0);
         this.x = 1000;
-
     }
 
     // Animation du fantôme

@@ -2,7 +2,10 @@ import javafx.animation.AnimationTimer;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.effect.GaussianBlur;
+
 import java.util.Random;
+
 
 public class GameScene extends Scene {
     private double x;
@@ -24,6 +27,9 @@ public class GameScene extends Scene {
     public static Hero heroRun = new Hero(200,255,1,0,425,10,103,"heros.png");
     public static Foe fantome = new Foe(801,280,0,0,0,74,57,"foe.png");
 
+    public static GaussianBlur gaussianblur = new GaussianBlur();
+
+
 
     // Animation du héro, timer
     static AnimationTimer timer = new AnimationTimer() {
@@ -37,6 +43,7 @@ public class GameScene extends Scene {
 
             // Perte de toutes les vies
             if (GameScene.lifebar.getAttitude()==0) {
+                gaussianblur.setRadius(20);
                 GameScene.timer.stop();
                 GameScene.gameOver();
                 GameScene.clickRestart();

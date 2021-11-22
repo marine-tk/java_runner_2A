@@ -7,6 +7,7 @@ public class Hero  extends AnimatedThing{
         super(x, y, attitude, index, maxIndex, l, h, filename);
     }
 
+
     // Saut
     public void jumpUp(){
         this.setAttitude(2);

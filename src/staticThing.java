@@ -1,4 +1,6 @@
+import javafx.scene.effect.GaussianBlur;
 import javafx.scene.image.ImageView;
+
 
 public class staticThing {
     private double x;
@@ -25,6 +27,7 @@ public class staticThing {
     public double getSTy() {
         return y;
     }
+
 
     // Update pour faire l'animation du background initialement statique
     public void update(long time) {
