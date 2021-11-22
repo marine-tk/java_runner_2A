@@ -1,14 +1,4 @@
-import javafx.animation.AnimationTimer;
-import javafx.application.Application;
-import javafx.geometry.Rectangle2D;
-import javafx.scene.Group;
-import javafx.scene.Scene;
-import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-
-import java.util.Random;
 
 public abstract class AnimatedThing {
     private double x;
@@ -21,7 +11,6 @@ public abstract class AnimatedThing {
     private double l;    // longueur de la fenêtre
     private double h;    // hauteur de la fenêtre
     private static double offset;  // offset entre chaque frame
-
 
     // Setter
     public void setImageview(String fileName) {
@@ -65,6 +54,15 @@ public abstract class AnimatedThing {
     }
     public int getAttitude() { return attitude;}
 
+    // Remet tous les éléments en place pour le restart du jeu
+    public void restartGame(){
+        GameScene.lifebar.setAttitude(3);
+        GameScene.heroRun.setAttitude(1);
+        GameScene.fantome.setAttitude(0);
+        this.x = 1000;
+
+    }
+
     // Animation du fantôme
     public void animationFoe(long time) {
         GameScene.insertFantome();
@@ -83,7 +81,7 @@ public abstract class AnimatedThing {
     // Collision du héros et de l'ennemi
     public void collision(long time) {
         if ((this.x <= 240  & this.x>200)& GameScene.heroRun.getY() >= 180) {
-            System.out.println("Collision");
+
             this.setAttitude(1); // active l'invincibilité après collision
             GameScene.lifebar.setAttitude(GameScene.lifebar.getAttitude() - 1);
 

@@ -1,7 +1,4 @@
-
 import javafx.geometry.Rectangle2D;
-import javafx.scene.Scene;
-import javafx.animation.Animation;
 
 public class Hero  extends AnimatedThing{
 

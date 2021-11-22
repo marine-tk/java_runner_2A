@@ -2,7 +2,6 @@ import javafx.animation.AnimationTimer;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
 import javafx.scene.Scene;
-import java.util.ArrayList;
 import java.util.Random;
 
 public class GameScene extends Scene {
@@ -20,6 +19,7 @@ public class GameScene extends Scene {
     public static Lifebar lifebar = new Lifebar(15,25,3,0,84,81,27,"lifebar.png");
     public static staticThing life = new staticThing(15,11,"life.png");
     public static staticThing gameover = new staticThing(150,95,"gameover.png");
+    public static staticThing restartGame = new staticThing(290,195,"restart.png");
 
     public static Hero heroRun = new Hero(200,255,1,0,425,10,103,"heros.png");
     public static Foe fantome = new Foe(801,280,0,0,0,74,57,"foe.png");
@@ -36,9 +36,11 @@ public class GameScene extends Scene {
             }
 
             // Perte de toutes les vies
-            if (GameScene.lifebar.getAttitude()==0){
+            if (GameScene.lifebar.getAttitude()==0) {
                 GameScene.timer.stop();
-                GameScene.gameOver();}
+                GameScene.gameOver();
+                GameScene.clickRestart();
+            }
 
             // Invincibilité
             heroRun.invincibilite(time);
@@ -105,9 +107,19 @@ public class GameScene extends Scene {
         gameover.imageview.setY(gameover.getSTy());
     }
 
+    public static void clickRestart(){
+        restartGame.imageview.setX(restartGame.getSTx());
+        restartGame.imageview.setY(restartGame.getSTy());
+    }
+
     public static void hidegameOver(){
         gameover.imageview.setX(-99999);
         gameover.imageview.setY(-99999);
+    }
+
+    public static void hideclickRestart(){
+        restartGame.imageview.setX(-99999);
+        restartGame.imageview.setY(-99999);
     }
 
     public static void heroRun(){
