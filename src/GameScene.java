@@ -22,7 +22,7 @@ public class GameScene extends Scene {
     public static Lifebar lifebar = new Lifebar(15,25,3,0,84,81,27,"lifebar.png");
     public static staticThing life = new staticThing(15,11,"life.png");
     public static staticThing gameover = new staticThing(150,95,"gameover.png");
-    public static staticThing restartGame = new staticThing(290,195,"restart.png");
+    public static staticThing restartGame = new staticThing(230,195,"restart.png");
 
     public static Hero heroRun = new Hero(200,255,1,0,425,10,103,"heros.png");
     public static Foe fantome = new Foe(801,280,0,0,0,74,57,"foe.png");
